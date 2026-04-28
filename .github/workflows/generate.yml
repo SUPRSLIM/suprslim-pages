@@ -4,68 +4,54 @@ on:
   workflow_dispatch:
     inputs:
       doelgroep:
-        description: 'Voor wie is deze pagina?'
+        description: "Voor wie is deze pagina?"
         required: true
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
+    permissions:
+      contents: write
+
     steps:
       - name: Checkout repo
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Generate HTML
         run: |
           doelgroep="${{ github.event.inputs.doelgroep }}"
           filename=$(echo "$doelgroep" | tr ' ' '-' | tr '[:upper:]' '[:lower:]').html
 
-          echo "<!DOCTYPE html>
-<html lang='nl'>
-<head>
-<meta charset='UTF-8'>
-<title>Weekmenu voor $doelgroep | SUPRSLIM</title>
-<meta name='viewport' content='width=device-width, initial-scale=1.0'>
+          cat > "$filename" <<'EOF'
+          <!DOCTYPE html>
+          <html lang="nl">
+          <head>
+            <meta charset="UTF-8">
+            <title>SUPRSLIM weekmenu</title>
+          </head>
+          <body style="font-family: Arial; max-width:600px; margin:80px auto;">
+            <h1>Nooit meer nadenken over eten</h1>
+            <p>Ontvang elke week een simpel, gezond en goedkoop SUPRSLIM weekmenu.</p>
 
-<style>
-body { font-family: Arial; margin:0; background:#f7f7f7; }
-.container { max-width:600px; margin:auto; background:white; padding:20px; }
-.cta { display:block; background:#00b894; color:white; padding:15px; text-align:center; margin-top:20px; border-radius:8px; }
-</style>
-</head>
+            <h2>Wat je krijgt</h2>
+            <ul>
+              <li>5 dagen weekmenu</li>
+              <li>Boodschappenlijst</li>
+              <li>Snelle recepten</li>
+            </ul>
 
-<body>
-<div class='container'>
+            <button style="padding:15px;font-size:18px;">
+              Download gratis weekmenu
+            </button>
+          </body>
+          </html>
+          EOF
 
-<h1>Nooit meer nadenken over eten ($doelgroep)</h1>
-<p>Ontvang elke week een simpel, gezond en goedkoop weekmenu.</p>
-
-<a class='cta'>Ontvang gratis weekmenu</a>
-
-<h2>Herkenbaar?</h2>
-<ul>
-<li>Elke dag bedenken wat je moet eten</li>
-<li>Te duur boodschappen doen</li>
-<li>Ongezonde keuzes door geen planning</li>
-</ul>
-
-<h2>Wat je krijgt</h2>
-<ul>
-<li>5 dagen weekmenu</li>
-<li>Boodschappenlijst</li>
-<li>Snelle recepten</li>
-</ul>
-
-<a class='cta'>Download gratis weekmenu</a>
-
-</div>
-</body>
-</html>" > $filename
-
-      - name: Commit & push
+      - name: Commit and push
         run: |
           git config user.name "github-actions"
           git config user.email "actions@github.com"
           git add .
-          git commit -m "Nieuwe pagina"
+          git commit -m "Nieuwe landingspagina" || echo "Geen wijzigingen"
           git push
