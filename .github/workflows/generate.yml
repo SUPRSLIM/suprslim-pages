@@ -1,53 +1,110 @@
-name: Generate Landing Page
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <title>Weekmenu voor {{doelgroep}} | SUPRSLIM</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-on:
-  workflow_dispatch:
-    inputs:
-      doelgroep:
-        description: 'Voor wie is deze pagina?'
-        required: true
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f7f7f7;
+    }
 
-jobs:
-  build:
-    runs-on: ubuntu-latest
+    .container {
+      max-width: 600px;
+      margin: auto;
+      background: white;
+      padding: 20px;
+    }
 
-    steps:
-      - name: Checkout repo
-        uses: actions/checkout@v3
+    h1 {
+      font-size: 28px;
+      margin-bottom: 10px;
+    }
 
-      - name: Generate HTML
-        run: |
-          doelgroep="${{ github.event.inputs.doelgroep }}"
-          filename=$(echo "$doelgroep" | tr ' ' '-' | tr '[:upper:]' '[:lower:]').html
+    h2 {
+      margin-top: 30px;
+    }
 
-          echo "<!DOCTYPE html>
-          <html>
-          <head>
-            <title>Weekmenu voor $doelgroep</title>
-          </head>
-          <body style='font-family: Arial; max-width: 600px; margin: auto;'>
-          
-          <h1>Nooit meer nadenken over eten ($doelgroep)</h1>
-          <p>Ontvang elke week een simpel, gezond en goedkoop weekmenu.</p>
+    p {
+      line-height: 1.6;
+    }
 
-          <h2>Waarom dit werkt:</h2>
-          <ul>
-            <li>Minder stress over eten</li>
-            <li>Bespaart geld</li>
-            <li>Gezonder zonder gedoe</li>
-          </ul>
+    .cta {
+      display: block;
+      width: 100%;
+      text-align: center;
+      background: #00b894;
+      color: white;
+      padding: 15px;
+      font-size: 18px;
+      margin-top: 20px;
+      text-decoration: none;
+      border-radius: 8px;
+    }
 
-          <button style='padding: 15px; font-size: 18px;'>
-            Ontvang gratis weekmenu
-          </button>
+    .box {
+      background: #f1f1f1;
+      padding: 15px;
+      margin-top: 20px;
+      border-radius: 8px;
+    }
 
-          </body>
-          </html>" > $filename
+    ul {
+      padding-left: 20px;
+    }
 
-      - name: Commit & push
-        run: |
-          git config user.name "github-actions"
-          git config user.email "actions@github.com"
-          git add .
-          git commit -m "Nieuwe pagina voor ${{ github.event.inputs.doelgroep }}"
-          git push
+  </style>
+</head>
+
+<body>
+
+<div class="container">
+
+  <!-- HERO -->
+  <h1>Nooit meer nadenken over eten ({{doelgroep}})</h1>
+  <p>Ontvang elke week een simpel, gezond en goedkoop weekmenu — zonder gedoe.</p>
+
+  <a href="#" class="cta">Ontvang gratis weekmenu</a>
+
+  <!-- PROBLEEM -->
+  <h2>Herkenbaar?</h2>
+  <ul>
+    <li>Elke dag bedenken wat je moet eten</li>
+    <li>Te duur boodschappen doen</li>
+    <li>Ongezonde keuzes door gebrek aan planning</li>
+  </ul>
+
+  <!-- OPLOSSING -->
+  <h2>Dit is de oplossing</h2>
+  <p>SUPRSLIM helpt je met een slim weekmenu dat je tijd, geld en stress bespaart.</p>
+
+  <!-- WAT JE KRIJGT -->
+  <div class="box">
+    <h2>Wat je krijgt</h2>
+    <ul>
+      <li>5 dagen compleet weekmenu</li>
+      <li>Ontbijt, lunch, diner en snacks</li>
+      <li>Direct bruikbare boodschappenlijst</li>
+      <li>Simpele en snelle recepten</li>
+    </ul>
+  </div>
+
+  <!-- RESULTAAT -->
+  <h2>Resultaat</h2>
+  <ul>
+    <li>Minder stress over eten</li>
+    <li>Bespaart geld op boodschappen</li>
+    <li>Gezonder eten zonder moeite</li>
+  </ul>
+
+  <!-- CTA -->
+  <a href="#" class="cta">Download gratis weekmenu</a>
+
+</div>
+
+</body>
+</html>
