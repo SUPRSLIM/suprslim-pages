@@ -1,0 +1,53 @@
+name: Generate Landing Page
+
+on:
+  workflow_dispatch:
+    inputs:
+      doelgroep:
+        description: 'Voor wie is deze pagina?'
+        required: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Generate HTML
+        run: |
+          doelgroep="${{ github.event.inputs.doelgroep }}"
+          filename=$(echo "$doelgroep" | tr ' ' '-' | tr '[:upper:]' '[:lower:]').html
+
+          echo "<!DOCTYPE html>
+          <html>
+          <head>
+            <title>Weekmenu voor $doelgroep</title>
+          </head>
+          <body style='font-family: Arial; max-width: 600px; margin: auto;'>
+          
+          <h1>Nooit meer nadenken over eten ($doelgroep)</h1>
+          <p>Ontvang elke week een simpel, gezond en goedkoop weekmenu.</p>
+
+          <h2>Waarom dit werkt:</h2>
+          <ul>
+            <li>Minder stress over eten</li>
+            <li>Bespaart geld</li>
+            <li>Gezonder zonder gedoe</li>
+          </ul>
+
+          <button style='padding: 15px; font-size: 18px;'>
+            Ontvang gratis weekmenu
+          </button>
+
+          </body>
+          </html>" > $filename
+
+      - name: Commit & push
+        run: |
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
+          git add .
+          git commit -m "Nieuwe pagina voor ${{ github.event.inputs.doelgroep }}"
+          git push
