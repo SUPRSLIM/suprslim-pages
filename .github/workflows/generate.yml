@@ -1,57 +1,155 @@
-name: Generate Landing Page
-
-on:
-  workflow_dispatch:
-    inputs:
-      doelgroep:
-        description: "Voor wie is deze pagina?"
-        required: true
-
-jobs:
-  build:
-    runs-on: ubuntu-latest
-
-    permissions:
-      contents: write
-
-    steps:
-      - name: Checkout repo
-        uses: actions/checkout@v4
-
       - name: Generate HTML
         run: |
           doelgroep="${{ github.event.inputs.doelgroep }}"
           filename=$(echo "$doelgroep" | tr ' ' '-' | tr '[:upper:]' '[:lower:]').html
 
-          cat > "$filename" <<'EOF'
-          <!DOCTYPE html>
-          <html lang="nl">
-          <head>
-            <meta charset="UTF-8">
-            <title>SUPRSLIM weekmenu</title>
-          </head>
-          <body style="font-family: Arial; max-width:600px; margin:80px auto;">
-            <h1>Nooit meer nadenken over eten</h1>
-            <p>Ontvang elke week een simpel, gezond en goedkoop SUPRSLIM weekmenu.</p>
+          cat > "$filename" <<EOF
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gratis SUPRSLIM weekmenu voor $doelgroep</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f4fbf5;
+      color: #163020;
+    }
+    .hero {
+      padding: 70px 24px;
+      text-align: center;
+      background: linear-gradient(135deg, #dff7e7, #ffffff);
+    }
+    .badge {
+      display: inline-block;
+      background: #1f8f4d;
+      color: white;
+      padding: 8px 14px;
+      border-radius: 999px;
+      font-size: 14px;
+      margin-bottom: 18px;
+    }
+    h1 {
+      font-size: 46px;
+      max-width: 850px;
+      margin: 0 auto 20px;
+      line-height: 1.08;
+    }
+    .subtitle {
+      font-size: 20px;
+      max-width: 680px;
+      margin: 0 auto 30px;
+      color: #37513f;
+    }
+    .cta {
+      display: inline-block;
+      background: #ff7a3d;
+      color: white;
+      padding: 18px 28px;
+      border-radius: 14px;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 18px;
+      box-shadow: 0 10px 25px rgba(255,122,61,.25);
+    }
+    .section {
+      max-width: 1050px;
+      margin: 0 auto;
+      padding: 55px 24px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 22px;
+    }
+    .card {
+      background: white;
+      padding: 26px;
+      border-radius: 22px;
+      box-shadow: 0 8px 30px rgba(0,0,0,.06);
+    }
+    .card h3 {
+      margin-top: 0;
+      font-size: 22px;
+    }
+    .highlight {
+      background: #163020;
+      color: white;
+      border-radius: 28px;
+      padding: 42px;
+      text-align: center;
+    }
+    .highlight p {
+      color: #d9f5df;
+      font-size: 18px;
+    }
+    .footer {
+      text-align: center;
+      padding: 30px;
+      color: #6b7c70;
+      font-size: 14px;
+    }
+    @media (max-width: 700px) {
+      h1 { font-size: 34px; }
+      .subtitle { font-size: 18px; }
+    }
+  </style>
+</head>
+<body>
 
-            <h2>Wat je krijgt</h2>
-            <ul>
-              <li>5 dagen weekmenu</li>
-              <li>Boodschappenlijst</li>
-              <li>Snelle recepten</li>
-            </ul>
+  <section class="hero">
+    <div class="badge">Gratis SUPRSLIM weekmenu</div>
+    <h1>Nooit meer nadenken over wat je deze week moet eten.</h1>
+    <p class="subtitle">
+      Speciaal voor $doelgroep: ontvang een simpel, gezond en betaalbaar weekmenu met boodschappenlijst.
+    </p>
+    <a href="#" class="cta">Download gratis weekmenu</a>
+  </section>
 
-            <button style="padding:15px;font-size:18px;">
-              Download gratis weekmenu
-            </button>
-          </body>
-          </html>
-          EOF
+  <section class="section">
+    <div class="grid">
+      <div class="card">
+        <h3>Gezond zonder gedoe</h3>
+        <p>Geen ingewikkelde recepten. Gewoon makkelijke maaltijden die passen in een drukke week.</p>
+      </div>
+      <div class="card">
+        <h3>Slim boodschappen doen</h3>
+        <p>Met een duidelijke lijst koop je gerichter in en voorkom je dure impulsaankopen.</p>
+      </div>
+      <div class="card">
+        <h3>Minder keuzestress</h3>
+        <p>Je weet vooraf wat je eet. Dat geeft rust, structuur en meer controle over je week.</p>
+      </div>
+    </div>
+  </section>
 
-      - name: Commit and push
-        run: |
-          git config user.name "github-actions"
-          git config user.email "actions@github.com"
-          git add .
-          git commit -m "Nieuwe landingspagina" || echo "Geen wijzigingen"
-          git push
+  <section class="section">
+    <div class="highlight">
+      <h2>Wat krijg je gratis?</h2>
+      <p>Een 5-daags SUPRSLIM weekmenu met ontbijt, lunch, diner, snacks en boodschappenlijst.</p>
+      <a href="#" class="cta">Ik wil het gratis weekmenu</a>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="grid">
+      <div class="card">
+        <h3>Voor wie is dit?</h3>
+        <p>Voor iedereen die gezonder wil eten, minder wil nadenken en slimmer boodschappen wil doen.</p>
+      </div>
+      <div class="card">
+        <h3>Waarom gratis?</h3>
+        <p>SUPRSLIM bouwt eerst vertrouwen op met waardevolle weekmenu’s voordat er producten worden verkocht.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="footer">
+    SUPRSLIM — slim inkopen, slim voorbereiden, gezond eten zonder gedoe.
+  </div>
+
+</body>
+</html>
+EOF
