@@ -3,172 +3,433 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Gratis SUPRSLIM weekmenu voor test2</title>
+  <meta name="description" content="Gratis SUPRSLIM weekmenu voor test2-doelgroep: zet een kleine eerste stap en plan daarna vrijblijvend een afspraak voor slimmer eten zonder gedoe.">
+  <title>Gratis SUPRSLIM weekmenu voor jouw testdoelgroep.</title>
   <style>
+    :root {
+      --green-900: #17351f;
+      --green-700: #1f8f4d;
+      --green-300: #86d65a;
+      --green-100: #e8f8df;
+      --orange: #ff7a3d;
+      --orange-100: #fff0e7;
+      --cream: #fffaf1;
+      --muted: #52685a;
+      --line: #dcebdd;
+      --shadow: 0 18px 50px rgba(23, 53, 31, .12);
+    }
+    * { box-sizing: border-box; }
     body {
       margin: 0;
       font-family: Arial, sans-serif;
-      background: #f6fbf4;
-      color: #17351f;
+      background: linear-gradient(180deg, #f6fbf4 0%, var(--cream) 100%);
+      color: var(--green-900);
     }
+    a { color: inherit; }
     .hero {
-      padding: 70px 22px;
-      text-align: center;
-      background: linear-gradient(135deg, #e4f8df, #ffffff);
+      position: relative;
+      overflow: hidden;
+      padding: 34px 22px 76px;
+      background:
+        radial-gradient(circle at 12% 20%, rgba(134, 214, 90, .26), transparent 28%),
+        radial-gradient(circle at 88% 12%, rgba(255, 122, 61, .18), transparent 30%),
+        linear-gradient(135deg, #e4f8df, #ffffff 58%, #fff0e7);
+    }
+    .nav {
+      max-width: 1160px;
+      margin: 0 auto 44px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 18px;
+    }
+    .logo { font-size: 24px; font-weight: 900; letter-spacing: -.04em; }
+    .nav-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.74);
+      border: 1px solid rgba(31, 143, 77, .14);
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 700;
+    }
+    .hero-grid {
+      max-width: 1160px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: minmax(0, 1.02fr) minmax(330px, .88fr);
+      gap: 42px;
+      align-items: center;
     }
     .badge {
-      display: inline-block;
-      background: #1f8f4d;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--green-700);
       color: white;
-      padding: 8px 16px;
+      padding: 10px 16px;
       border-radius: 999px;
       font-size: 14px;
+      font-weight: 800;
       margin-bottom: 18px;
     }
     h1 {
-      font-size: 46px;
-      max-width: 850px;
-      margin: 0 auto 18px;
-      line-height: 1.08;
+      font-size: clamp(40px, 6vw, 72px);
+      margin: 0 0 18px;
+      line-height: .98;
+      letter-spacing: -.06em;
     }
+    h2 { font-size: clamp(30px, 4vw, 46px); line-height: 1.04; letter-spacing: -.04em; margin: 0 0 14px; }
+    h3 { margin: 0 0 10px; font-size: 21px; }
+    p { line-height: 1.65; }
     .subtitle {
-      max-width: 700px;
-      margin: 0 auto 28px;
+      max-width: 720px;
+      margin: 0 0 28px;
       font-size: 20px;
-      color: #3d5a43;
+      color: var(--muted);
     }
-    .formbox {
-      background: white;
-      max-width: 520px;
-      margin: 28px auto 0;
-      padding: 18px;
-      border-radius: 22px;
-      box-shadow: 0 12px 40px rgba(0,0,0,.08);
+    .microcopy {
       display: flex;
+      flex-wrap: wrap;
       gap: 10px;
+      margin: 0 0 28px;
+      padding: 0;
+      list-style: none;
     }
-    input {
-      flex: 1;
-      padding: 16px;
-      border: 1px solid #d8e6d8;
-      border-radius: 12px;
-      font-size: 16px;
+    .microcopy li {
+      padding: 10px 13px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.78);
+      border: 1px solid rgba(31,143,77,.14);
+      color: var(--green-900);
+      font-size: 14px;
+      font-weight: 700;
     }
-    button {
-      background: #ff7a3d;
+    .visual-card {
+      position: relative;
+      background: rgba(255,255,255,.72);
+      border: 1px solid rgba(255,255,255,.85);
+      border-radius: 38px;
+      padding: 18px;
+      box-shadow: var(--shadow);
+    }
+    .visual-card img { display: block; width: 100%; height: auto; border-radius: 30px; }
+    .floating-note {
+      position: absolute;
+      right: -10px;
+      bottom: 22px;
+      max-width: 245px;
+      padding: 16px 18px;
+      border-radius: 22px;
+      background: var(--green-900);
       color: white;
-      border: 0;
-      border-radius: 12px;
-      padding: 16px 20px;
-      font-size: 16px;
-      font-weight: bold;
-      cursor: pointer;
+      box-shadow: 0 16px 36px rgba(23, 53, 31, .24);
+      font-weight: 800;
     }
-    .section {
-      max-width: 1080px;
-      margin: 0 auto;
-      padding: 55px 22px;
+    .funnel-card {
+      background: white;
+      border-radius: 30px;
+      padding: 22px;
+      box-shadow: var(--shadow);
+      max-width: 620px;
+      border: 1px solid rgba(31,143,77,.12);
     }
-    .grid {
+    .progress {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 22px;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-bottom: 18px;
     }
+    .progress span {
+      border-radius: 999px;
+      padding: 10px 12px;
+      background: #f0f6ee;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 800;
+      text-align: center;
+    }
+    .progress .active { background: var(--green-900); color: white; }
+    .field-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    label { display: block; margin: 0 0 8px; font-size: 14px; font-weight: 800; color: var(--green-900); }
+    input, select, textarea {
+      width: 100%;
+      padding: 15px 14px;
+      border: 1px solid var(--line);
+      border-radius: 15px;
+      font-size: 16px;
+      font-family: inherit;
+      color: var(--green-900);
+      background: #fff;
+    }
+    textarea { min-height: 96px; resize: vertical; }
+    .step { display: none; }
+    .step.active { display: block; }
+    .form-actions { display: flex; gap: 12px; align-items: center; margin-top: 14px; }
+    .btn {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 54px;
+      border: 0;
+      border-radius: 16px;
+      padding: 16px 22px;
+      background: var(--orange);
+      color: white;
+      font-size: 16px;
+      font-weight: 900;
+      cursor: pointer;
+      text-decoration: none;
+      box-shadow: 0 12px 26px rgba(255, 122, 61, .28);
+    }
+    .btn.secondary { background: var(--green-900); box-shadow: none; }
+    .small { font-size: 13px; color: #6b7c70; margin: 12px 0 0; }
+    .section { max-width: 1160px; margin: 0 auto; padding: 64px 22px; }
+    .section-head { max-width: 760px; margin-bottom: 30px; }
+    .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
     .card {
       background: white;
       padding: 28px;
-      border-radius: 24px;
-      box-shadow: 0 8px 28px rgba(0,0,0,.06);
+      border-radius: 28px;
+      box-shadow: 0 8px 28px rgba(23, 53, 31, .07);
+      border: 1px solid rgba(31,143,77,.10);
     }
-    .card h3 {
-      margin-top: 0;
-      font-size: 22px;
-    }
+    .card .icon { font-size: 30px; margin-bottom: 14px; }
     .dark {
-      background: #17351f;
+      display: grid;
+      grid-template-columns: 1fr .9fr;
+      gap: 34px;
+      align-items: center;
+      background: var(--green-900);
       color: white;
+      border-radius: 34px;
+      padding: 38px;
+      overflow: hidden;
+    }
+    .dark p { color: #dff3df; font-size: 18px; }
+    .dark img { width: 100%; border-radius: 24px; background: white; }
+    .timeline { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; counter-reset: item; }
+    .timeline .card { position: relative; padding-top: 60px; }
+    .timeline .card:before {
+      counter-increment: item;
+      content: counter(item);
+      position: absolute;
+      top: 22px;
+      left: 28px;
+      display: grid;
+      place-items: center;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: var(--green-700);
+      color: #fff;
+      font-weight: 900;
+    }
+    .cta {
       text-align: center;
-      border-radius: 30px;
-      padding: 46px 28px;
+      background: linear-gradient(135deg, var(--green-900), #245c32);
+      color: white;
+      border-radius: 34px;
+      padding: 48px 28px;
+      box-shadow: var(--shadow);
     }
-    .dark p {
-      color: #dff3df;
-      font-size: 18px;
+    .cta p { color: #dff3df; max-width: 680px; margin: 0 auto 22px; }
+    footer { text-align: center; padding: 34px 22px; color: #6b7c70; font-size: 14px; }
+    @media (max-width: 900px) {
+      .hero-grid, .dark { grid-template-columns: 1fr; }
+      .grid, .timeline { grid-template-columns: 1fr; }
+      .floating-note { position: static; margin-top: -12px; max-width: none; }
     }
-    .small {
-      font-size: 13px;
-      color: #6b7c70;
-      margin-top: 12px;
+    @media (max-width: 640px) {
+      .hero { padding-top: 24px; }
+      .nav { margin-bottom: 28px; align-items: flex-start; flex-direction: column; }
+      .field-grid, .progress { grid-template-columns: 1fr; }
+      .form-actions { flex-direction: column; align-items: stretch; }
+      .btn { width: 100%; }
+      .funnel-card, .card, .dark, .cta { border-radius: 24px; }
     }
-    footer {
-      text-align: center;
-      padding: 30px;
-      color: #6b7c70;
-      font-size: 14px;
-    }
-    @media (max-width: 700px) {
-      h1 { font-size: 34px; }
-      .subtitle { font-size: 18px; }
-      .formbox { flex-direction: column; }
-    }
+
   </style>
 </head>
 <body>
+  <section class="hero" id="start">
+    <nav class="nav" aria-label="Hoofdnavigatie">
+      <div class="logo">SUPRSLIM</div>
+      <div class="nav-pill">✓ Gratis weekmenu · ✓ Vrijblijvende afspraak</div>
+    </nav>
 
-  <section class="hero">
-    <div class="badge">Gratis SUPRSLIM weekmenu</div>
-    <h1>Nooit meer bedenken wat je deze week moet eten.</h1>
-    <p class="subtitle">
-      Speciaal voor test2: ontvang een simpel, gezond en betaalbaar weekmenu met boodschappenlijst.
-    </p>
+    <div class="hero-grid">
+      <div>
+        <div class="badge">Zeigarnik-funnel: begin met één kleine stap</div>
+        <h1>Gratis SUPRSLIM weekmenu voor jouw testdoelgroep.</h1>
+        <p class="subtitle">Deze testvariant gebruikt dezelfde Zeigarnik-funnel: eerst een micro-ja, daarna korte kwalificatie en vervolgens een afspraakmoment op de bedankpagina of via opvolgmail.</p>
+        <ul class="microcopy" aria-label="Belangrijkste voordelen">
+          <li>5 dagen overzicht</li>
+          <li>Boodschappenlijst inbegrepen</li>
+          <li>Geen crashdieet</li>
+          <li>Afspraak pas na je micro-ja</li>
+        </ul>
 
-    <form class="formbox" action="https://formsubmit.co/sandervandenbaart@outlook.com" method="POST">
-      <input type="email" name="email" placeholder="Vul je e-mailadres in" required>
-      <button type="submit">Stuur mij het weekmenu</button>
-    </form>
-    <p class="small">Gratis download. Geen ingewikkelde diëten. Gewoon slimmer eten.</p>
+        <form class="funnel-card" action="https://formsubmit.co/sandervandenbaart@outlook.com" method="POST" data-funnel-form>
+          <input type="hidden" name="_subject" value="Nieuwe SUPRSLIM aanvraag - test2-doelgroep">
+          <input type="hidden" name="_template" value="table">
+          <input type="hidden" name="_captcha" value="false">
+          <input type="hidden" name="_next" value="bedankt.html">
+          <input type="hidden" name="_autoresponse" value="Bedankt voor je aanvraag! Je hebt de eerste stap gezet. Heb je nog geen afspraak gepland? Reageer dan op deze mail met 'afspraak' en we plannen samen een vrijblijvend SUPRSLIM-moment in.">
+
+          <div class="progress" aria-hidden="true">
+            <span class="active" data-progress="1">Stap 1: jouw weekmenu</span>
+            <span data-progress="2">Stap 2: persoonlijk maken</span>
+          </div>
+
+          <div class="step active" data-step="1">
+            <div class="field-grid">
+              <div>
+                <label for="name-test2.html">Voornaam</label>
+                <input id="name-test2.html" type="text" name="voornaam" placeholder="Bijv. Sanne" autocomplete="given-name" required>
+              </div>
+              <div>
+                <label for="email-test2.html">E-mailadres</label>
+                <input id="email-test2.html" type="email" name="email" placeholder="jij@email.nl" autocomplete="email" required>
+              </div>
+            </div>
+            <div class="form-actions">
+              <button class="btn" type="button" data-continue>Ja, stuur mijn gratis weekmenu</button>
+            </div>
+            <p class="small">Dit is bewust klein: je hoeft alleen naam en e-mail in te vullen. Daarna maken we het weekmenu relevanter.</p>
+          </div>
+
+          <div class="step" data-step="2">
+            <div class="field-grid">
+              <div>
+                <label for="goal-test2.html">Waar wil je vooral hulp bij?</label>
+                <select id="goal-test2.html" name="belangrijkste_hulpvraag" required>
+                  <option value="">Kies je grootste remmer</option>
+                  <option>Gezonder eten met weinig tijd</option>
+                  <option>Boodschappen goedkoper plannen</option>
+                  <option>Minder snacken of bestellen</option>
+                  <option>Structuur voor het hele gezin</option>
+                </select>
+              </div>
+              <div>
+                <label for="moment-test2.html">Wanneer wil je starten?</label>
+                <select id="moment-test2.html" name="startmoment" required>
+                  <option value="">Kies een moment</option>
+                  <option>Deze week</option>
+                  <option>Volgende week</option>
+                  <option>Binnen een maand</option>
+                </select>
+              </div>
+            </div>
+            <label for="note-test2.html" style="margin-top: 12px;">Wat maakt eten plannen nu lastig?</label>
+            <textarea id="note-test2.html" name="situatie" placeholder="Bijv. weinig tijd, kieskeurige eters, drukke avonden..."></textarea>
+            <div class="form-actions">
+              <button class="btn secondary" type="button" data-back>Terug</button>
+              <button class="btn" type="submit">Maak mijn weekmenu af</button>
+            </div>
+            <p class="small">Na verzenden krijg je de bedankpagina met afspraakmogelijkheid. Als je nog niet plant, sturen we je later per mail opnieuw richting een afspraak.</p>
+          </div>
+        </form>
+      </div>
+
+      <div class="visual-card">
+        <img src="assets/suprslim-funnel-hero.svg" alt="Gezonde SUPRSLIM weekplanning met boodschappen en afspraakkaart">
+        <div class="floating-note">Je bent al begonnen. Maak je plan nu af.</div>
+      </div>
+    </div>
   </section>
 
   <section class="section">
-    <div class="grid">
+    <div class="section-head">
+      <h2>Waarom deze opbouw meer afspraken oplevert</h2>
+      <p>De funnel gebruikt het Zeigarnik-effect: zodra iemand een kleine stap afrondt, voelt de volgende stap als logisch vervolg in plaats van als nieuwe beslissing.</p>
+    </div>
+    <div class="timeline">
       <div class="card">
-        <h3>Gezond zonder gedoe</h3>
-        <p>Geen ingewikkelde recepten of dure producten. Gewoon makkelijke maaltijden voor een drukke week.</p>
+        <h3>Eerst een micro-investering</h3>
+        <p>Naam en e-mail zijn laagdrempelig, maar genoeg om intern “ja” te zeggen tegen SUPRSLIM.</p>
       </div>
       <div class="card">
-        <h3>Slim boodschappen doen</h3>
-        <p>Met een duidelijke boodschappenlijst koop je gerichter in en voorkom je onnodige impulsaankopen.</p>
+        <h3>Daarna relevante frictie</h3>
+        <p>Een paar korte vragen maken het persoonlijker en filteren verkeer dat niet bij de belofte past.</p>
       </div>
       <div class="card">
-        <h3>Minder keuzestress</h3>
-        <p>Je weet vooraf wat je eet. Dat geeft rust, structuur en meer controle over je week.</p>
+        <h3>Dan pas de afspraak</h3>
+        <p>Op de bedankpagina en in de opvolgmail krijgt de bezoeker één duidelijke vervolgstap: vrijblijvend plannen.</p>
       </div>
     </div>
   </section>
 
   <section class="section">
     <div class="dark">
-      <h2>Wat krijg je gratis?</h2>
-      <p>Een 5-daags SUPRSLIM weekmenu met ontbijt, lunch, diner, snacks en boodschappenlijst.</p>
+      <div>
+        <h2>Perfecte match met advertentieverkeer</h2>
+        <p>Gebruik deze testpagina alleen voor advertentiegroepen waarvan de zoekintentie overeenkomt met gratis weekmenu, boodschappenlijst en gezonder eten zonder gedoe.</p>
+        <p>Zo kun je live data verzamelen zonder de volgorde van de funnel te wijzigen. Optimaliseer pas nadat de eerste conversiedata binnen is.</p>
+      </div>
+      <img src="assets/suprslim-progress.svg" alt="Funnel van micro-ja naar weekmenu en afspraak">
     </div>
   </section>
 
   <section class="section">
     <div class="grid">
       <div class="card">
-        <h3>Voor wie is dit?</h3>
-        <p>Voor mensen die gezonder willen eten, minder willen nadenken en slimmer boodschappen willen doen.</p>
+        <div class="icon">🥗</div>
+        <h3>Gezond zonder gedoe</h3>
+        <p>Geen ingewikkelde recepten of dure producten. Gewoon makkelijke maaltijden die passen bij een drukke week.</p>
       </div>
       <div class="card">
-        <h3>Waarom SUPRSLIM?</h3>
-        <p>SUPRSLIM helpt je slim inkopen, slim voorbereiden en gezond eten zonder gedoe.</p>
+        <div class="icon">🛒</div>
+        <h3>Slim boodschappen doen</h3>
+        <p>Met een duidelijke lijst koop je gerichter in en voorkom je onnodige impulsaankopen.</p>
       </div>
+      <div class="card">
+        <div class="icon">📅</div>
+        <h3>Afspraak zonder druk</h3>
+        <p>Wie klaar is voor hulp plant direct. Wie nog twijfelt, krijgt later per mail dezelfde logische vervolgstap.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="cta">
+      <h2>Start met je kleine eerste stap</h2>
+      <p>Vul je naam en e-mailadres in. Daarna maken we het weekmenu relevanter en kun je vrijblijvend een afspraak plannen.</p>
+      <a class="btn" href="#start">Begin met mijn gratis weekmenu</a>
     </div>
   </section>
 
   <footer>
     SUPRSLIM — slim inkopen, slim voorbereiden, gezond eten zonder gedoe.
   </footer>
+
+  <script>
+    const funnelForm = document.querySelector('[data-funnel-form]');
+    if (funnelForm) {
+      const firstStep = funnelForm.querySelector('[data-step="1"]');
+      const secondStep = funnelForm.querySelector('[data-step="2"]');
+      const progressItems = funnelForm.querySelectorAll('[data-progress]');
+      const continueButton = funnelForm.querySelector('[data-continue]');
+      const backButton = funnelForm.querySelector('[data-back]');
+
+      function showStep(step) {
+        firstStep.classList.toggle('active', step === 1);
+        secondStep.classList.toggle('active', step === 2);
+        progressItems.forEach((item) => item.classList.toggle('active', item.dataset.progress === String(step)));
+      }
+
+      continueButton.addEventListener('click', () => {
+        const requiredFields = firstStep.querySelectorAll('input[required]');
+        const isValid = Array.from(requiredFields).every((field) => field.reportValidity());
+        if (isValid) showStep(2);
+      });
+
+      backButton.addEventListener('click', () => showStep(1));
+    }
+  </script>
 
 </body>
 </html>

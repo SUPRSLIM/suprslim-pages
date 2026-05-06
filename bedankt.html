@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bedankt - plan je SUPRSLIM afspraak</title>
+  <style>
+    :root { --green-900:#17351f; --green-700:#1f8f4d; --orange:#ff7a3d; --cream:#fffaf1; --muted:#52685a; }
+    * { box-sizing: border-box; }
+    body { margin: 0; font-family: Arial, sans-serif; background: linear-gradient(135deg, #e4f8df, #ffffff 55%, #fff0e7); color: var(--green-900); }
+    main { min-height: 100vh; display: grid; place-items: center; padding: 32px; }
+    .wrap { width: min(1080px, 100%); display: grid; grid-template-columns: 1fr .9fr; gap: 28px; align-items: center; }
+    .card { background: rgba(255,255,255,.86); border: 1px solid rgba(255,255,255,.9); border-radius: 34px; padding: clamp(28px, 5vw, 52px); box-shadow: 0 18px 50px rgba(23, 53, 31, .12); }
+    .badge { display: inline-flex; padding: 10px 16px; border-radius: 999px; background: var(--green-700); color: white; font-weight: 900; margin-bottom: 18px; }
+    h1 { margin: 0 0 16px; font-size: clamp(40px, 6vw, 70px); line-height: .98; letter-spacing: -.06em; }
+    p { color: var(--muted); font-size: 18px; line-height: 1.65; }
+    .steps { display: grid; gap: 14px; margin: 28px 0; }
+    .step { display: flex; gap: 14px; align-items: flex-start; padding: 16px; border-radius: 18px; background: #f6fbf4; }
+    .num { flex: 0 0 30px; height: 30px; border-radius: 50%; display: grid; place-items: center; background: var(--green-900); color: #fff; font-weight: 900; }
+    .btn { display: inline-flex; align-items: center; justify-content: center; min-height: 56px; padding: 16px 24px; border-radius: 16px; background: var(--orange); color: white; text-decoration: none; font-weight: 900; box-shadow: 0 12px 26px rgba(255, 122, 61, .28); }
+    .secondary { background: var(--green-900); box-shadow: none; margin-left: 10px; }
+    img { width: 100%; border-radius: 30px; background: white; box-shadow: 0 18px 50px rgba(23, 53, 31, .12); }
+    @media (max-width: 840px) { .wrap { grid-template-columns: 1fr; } .secondary { margin-left: 0; margin-top: 10px; } .btn { width: 100%; } }
+  </style>
+</head>
+<body>
+  <main>
+    <div class="wrap">
+      <section class="card">
+        <div class="badge">Stap 1 is afgerond</div>
+        <h1>Je weekmenu-aanvraag is binnen.</h1>
+        <p>Mooi: je hebt al een kleine stap gezet. Maak de cirkel nu rond met een vrijblijvende SUPRSLIM-afspraak, zodat we je weekmenu en eetstructuur kunnen aanscherpen.</p>
+        <div class="steps" aria-label="Volgende stappen">
+          <div class="step"><span class="num">1</span><div><strong>Check je inbox.</strong><br>Je ontvangt een bevestiging en opvolging per mail.</div></div>
+          <div class="step"><span class="num">2</span><div><strong>Plan alleen als het logisch voelt.</strong><br>De afspraak is bedoeld voor praktische hulp, niet voor verkooppraat.</div></div>
+          <div class="step"><span class="num">3</span><div><strong>Nog niet gepland?</strong><br>Dan sturen we je later per mail nog één duidelijke route naar een afspraak.</div></div>
+        </div>
+        <a class="btn" href="mailto:sandervandenbaart@outlook.com?subject=Afspraak%20SUPRSLIM&body=Hoi%20SUPRSLIM%2C%0A%0AIk%20wil%20graag%20een%20vrijblijvende%20afspraak%20plannen.%0A%0AGroet%2C">Plan mijn vrijblijvende afspraak</a>
+        <a class="btn secondary" href="index.html">Terug naar overzicht</a>
+      </section>
+      <img src="assets/suprslim-funnel-hero.svg" alt="SUPRSLIM weekmenu, boodschappenlijst en afspraakkaart">
+    </div>
+  </main>
+</body>
+</html>

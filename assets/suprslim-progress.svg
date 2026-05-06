@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 780 180" role="img" aria-labelledby="title desc">
+  <title id="title">Drie stappen van de SUPRSLIM funnel</title>
+  <desc id="desc">Van e-mailadres naar weekmenu en vervolgens een vrijblijvende afspraak.</desc>
+  <defs>
+    <linearGradient id="line" x1="0" x2="1">
+      <stop offset="0%" stop-color="#1f8f4d"/>
+      <stop offset="100%" stop-color="#ff7a3d"/>
+    </linearGradient>
+  </defs>
+  <rect width="780" height="180" rx="34" fill="#ffffff"/>
+  <path d="M145 78h490" stroke="url(#line)" stroke-width="12" stroke-linecap="round" opacity="0.28"/>
+  <g font-family="Arial, sans-serif" text-anchor="middle">
+    <circle cx="145" cy="78" r="44" fill="#1f8f4d"/>
+    <text x="145" y="88" font-size="30" font-weight="700" fill="#fff">1</text>
+    <text x="145" y="148" font-size="18" font-weight="700" fill="#17351f">Micro-ja</text>
+    <circle cx="390" cy="78" r="44" fill="#86d65a"/>
+    <text x="390" y="88" font-size="30" font-weight="700" fill="#17351f">2</text>
+    <text x="390" y="148" font-size="18" font-weight="700" fill="#17351f">Weekmenu</text>
+    <circle cx="635" cy="78" r="44" fill="#ff7a3d"/>
+    <text x="635" y="88" font-size="30" font-weight="700" fill="#fff">3</text>
+    <text x="635" y="148" font-size="18" font-weight="700" fill="#17351f">Afspraak</text>
+  </g>
+</svg>
