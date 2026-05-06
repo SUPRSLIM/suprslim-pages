@@ -4,171 +4,492 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Gratis SUPRSLIM weekmenu voor test2</title>
+  <meta name="description" content="Download gratis een 5-daags SUPRSLIM weekmenu met makkelijke gezinsmaaltijden, snacks en boodschappenlijst.">
   <style>
+    :root {
+      --background: #fbfdf9;
+      --foreground: #14251a;
+      --card: #ffffff;
+      --card-foreground: #14251a;
+      --muted: #eef6eb;
+      --muted-foreground: #5f705f;
+      --primary: #176b3a;
+      --primary-foreground: #ffffff;
+      --accent: #ff7a3d;
+      --accent-foreground: #ffffff;
+      --border: #dce9d7;
+      --ring: rgba(23, 107, 58, .22);
+      --radius: 22px;
+      --shadow: 0 18px 55px rgba(20, 37, 26, .10);
+    }
+
+    * { box-sizing: border-box; }
+
     body {
       margin: 0;
-      font-family: Arial, sans-serif;
-      background: #f6fbf4;
-      color: #17351f;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(255, 122, 61, .10), transparent 34rem),
+        linear-gradient(180deg, #f6fbf4 0%, var(--background) 50%, #ffffff 100%);
+      color: var(--foreground);
     }
-    .hero {
-      padding: 70px 22px;
-      text-align: center;
-      background: linear-gradient(135deg, #e4f8df, #ffffff);
+
+    a { color: inherit; }
+
+    .page-shell {
+      width: min(1180px, calc(100% - 32px));
+      margin: 0 auto;
     }
-    .badge {
-      display: inline-block;
-      background: #1f8f4d;
-      color: white;
-      padding: 8px 16px;
-      border-radius: 999px;
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 22px 0;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 800;
+      letter-spacing: -.03em;
+    }
+
+    .brand-mark {
+      display: grid;
+      width: 36px;
+      height: 36px;
+      place-items: center;
+      border-radius: 12px;
+      background: var(--primary);
+      color: var(--primary-foreground);
+      box-shadow: 0 10px 24px rgba(23, 107, 58, .22);
+    }
+
+    .nav-proof {
+      display: none;
+      color: var(--muted-foreground);
       font-size: 14px;
-      margin-bottom: 18px;
     }
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.04fr) minmax(340px, .78fr);
+      gap: 32px;
+      align-items: center;
+      padding: 34px 0 70px;
+    }
+
+    .eyebrow,
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      width: fit-content;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, .78);
+      color: var(--primary);
+      padding: 8px 13px;
+      font-size: 14px;
+      font-weight: 700;
+      box-shadow: 0 8px 24px rgba(20, 37, 26, .06);
+    }
+
     h1 {
-      font-size: 46px;
-      max-width: 850px;
-      margin: 0 auto 18px;
-      line-height: 1.08;
+      max-width: 760px;
+      margin: 18px 0 18px;
+      font-size: clamp(42px, 6vw, 72px);
+      line-height: .96;
+      letter-spacing: -.06em;
     }
+
     .subtitle {
-      max-width: 700px;
-      margin: 0 auto 28px;
-      font-size: 20px;
-      color: #3d5a43;
+      max-width: 680px;
+      margin: 0 0 28px;
+      color: #3e5842;
+      font-size: clamp(18px, 2vw, 22px);
+      line-height: 1.55;
     }
-    .formbox {
-      background: white;
-      max-width: 520px;
-      margin: 28px auto 0;
-      padding: 18px;
-      border-radius: 22px;
-      box-shadow: 0 12px 40px rgba(0,0,0,.08);
+
+    .hero-list {
+      display: grid;
+      gap: 12px;
+      max-width: 660px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .hero-list li,
+    .check-row {
       display: flex;
       gap: 10px;
+      align-items: flex-start;
+      color: #2f4634;
     }
-    input {
-      flex: 1;
-      padding: 16px;
-      border: 1px solid #d8e6d8;
-      border-radius: 12px;
-      font-size: 16px;
+
+    .check {
+      display: inline-grid;
+      flex: 0 0 22px;
+      width: 22px;
+      height: 22px;
+      place-items: center;
+      border-radius: 999px;
+      background: var(--muted);
+      color: var(--primary);
+      font-size: 14px;
+      font-weight: 900;
     }
-    button {
-      background: #ff7a3d;
-      color: white;
-      border: 0;
-      border-radius: 12px;
-      padding: 16px 20px;
-      font-size: 16px;
-      font-weight: bold;
-      cursor: pointer;
+
+    .lead-card,
+    .card,
+    .preview-card {
+      border: 1px solid var(--border);
+      border-radius: calc(var(--radius) + 6px);
+      background: rgba(255, 255, 255, .92);
+      color: var(--card-foreground);
+      box-shadow: var(--shadow);
     }
-    .section {
-      max-width: 1080px;
-      margin: 0 auto;
-      padding: 55px 22px;
+
+    .lead-card {
+      position: relative;
+      overflow: hidden;
+      padding: 8px;
     }
-    .grid {
+
+    .lead-card::before {
+      content: "";
+      position: absolute;
+      inset: 0 0 auto;
+      height: 8px;
+      background: linear-gradient(90deg, var(--primary), #50b86f, var(--accent));
+    }
+
+    .lead-card-inner { padding: 28px; }
+
+    .form-header {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 22px;
+      gap: 8px;
+      margin-bottom: 18px;
     }
-    .card {
-      background: white;
-      padding: 28px;
-      border-radius: 24px;
-      box-shadow: 0 8px 28px rgba(0,0,0,.06);
+
+    .form-header h2 {
+      margin: 0;
+      font-size: 28px;
+      letter-spacing: -.04em;
     }
-    .card h3 {
-      margin-top: 0;
-      font-size: 22px;
+
+    .form-header p {
+      margin: 0;
+      color: var(--muted-foreground);
+      line-height: 1.5;
     }
-    .dark {
-      background: #17351f;
-      color: white;
-      text-align: center;
-      border-radius: 30px;
-      padding: 46px 28px;
+
+    .formbox {
+      display: grid;
+      gap: 12px;
     }
-    .dark p {
-      color: #dff3df;
-      font-size: 18px;
+
+    label {
+      display: grid;
+      gap: 8px;
+      color: #344936;
+      font-size: 14px;
+      font-weight: 700;
     }
-    .small {
+
+    input[type="email"] {
+      width: 100%;
+      min-height: 54px;
+      padding: 15px 16px;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      background: #fff;
+      color: var(--foreground);
+      font: inherit;
+      font-size: 16px;
+      outline: 0;
+      transition: border-color .18s ease, box-shadow .18s ease;
+    }
+
+    input[type="email"]:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 4px var(--ring);
+    }
+
+    button {
+      display: inline-flex;
+      min-height: 56px;
+      align-items: center;
+      justify-content: center;
+      border: 0;
+      border-radius: 14px;
+      background: var(--accent);
+      color: var(--accent-foreground);
+      padding: 16px 20px;
+      font: inherit;
+      font-size: 17px;
+      font-weight: 800;
+      cursor: pointer;
+      box-shadow: 0 14px 28px rgba(255, 122, 61, .26);
+      transition: transform .18s ease, box-shadow .18s ease;
+    }
+
+    button:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 18px 34px rgba(255, 122, 61, .32);
+    }
+
+    .privacy-note {
+      margin: 0;
+      color: var(--muted-foreground);
       font-size: 13px;
-      color: #6b7c70;
-      margin-top: 12px;
-    }
-    footer {
+      line-height: 1.45;
       text-align: center;
-      padding: 30px;
-      color: #6b7c70;
+    }
+
+    .form-benefits {
+      display: grid;
+      gap: 10px;
+      margin: 18px 0 0;
+      padding: 18px 0 0;
+      border-top: 1px solid var(--border);
       font-size: 14px;
     }
-    @media (max-width: 700px) {
-      h1 { font-size: 34px; }
-      .subtitle { font-size: 18px; }
-      .formbox { flex-direction: column; }
+
+    .section {
+      padding: 52px 0;
+    }
+
+    .section-heading {
+      max-width: 720px;
+      margin-bottom: 24px;
+    }
+
+    .section-heading h2 {
+      margin: 0 0 10px;
+      font-size: clamp(30px, 4vw, 46px);
+      line-height: 1;
+      letter-spacing: -.05em;
+    }
+
+    .section-heading p {
+      margin: 0;
+      color: var(--muted-foreground);
+      font-size: 18px;
+      line-height: 1.55;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .card {
+      padding: 24px;
+      box-shadow: 0 12px 36px rgba(20, 37, 26, .07);
+    }
+
+    .card-icon {
+      display: grid;
+      width: 44px;
+      height: 44px;
+      place-items: center;
+      margin-bottom: 18px;
+      border-radius: 15px;
+      background: var(--muted);
+      color: var(--primary);
+      font-size: 22px;
+    }
+
+    .card h3 {
+      margin: 0 0 10px;
+      font-size: 21px;
+      letter-spacing: -.02em;
+    }
+
+    .card p {
+      margin: 0;
+      color: var(--muted-foreground);
+      line-height: 1.6;
+    }
+
+    .preview-card {
+      display: grid;
+      grid-template-columns: .9fr 1.1fr;
+      gap: 28px;
+      align-items: center;
+      padding: 28px;
+      background: #17351f;
+      color: #fff;
+    }
+
+    .preview-card p { color: #dff3df; }
+
+    .menu-list {
+      display: grid;
+      gap: 12px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .menu-list li {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      border: 1px solid rgba(255,255,255,.15);
+      border-radius: 16px;
+      background: rgba(255,255,255,.08);
+      padding: 14px;
+    }
+
+    .sticky-cta {
+      position: sticky;
+      bottom: 14px;
+      z-index: 5;
+      display: none;
+      width: min(100% - 24px, 480px);
+      margin: 0 auto 14px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, .94);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(14px);
+    }
+
+    .sticky-cta a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 14px 18px;
+      color: var(--primary);
+      font-weight: 800;
+      text-decoration: none;
+    }
+
+    footer {
+      padding: 34px 0 44px;
+      color: var(--muted-foreground);
+      font-size: 14px;
+      text-align: center;
+    }
+
+    @media (min-width: 760px) {
+      .nav-proof { display: block; }
+    }
+
+    @media (max-width: 900px) {
+      .hero,
+      .preview-card {
+        grid-template-columns: 1fr;
+      }
+      .grid { grid-template-columns: 1fr; }
+      .hero { padding-top: 18px; }
+      .lead-card-inner { padding: 22px; }
+      .sticky-cta { display: block; }
     }
   </style>
 </head>
 <body>
+  <header class="page-shell nav" aria-label="SUPRSLIM">
+    <div class="brand"><span class="brand-mark">S</span> SUPRSLIM</div>
+    <div class="nav-proof">Gratis weekmenu · klaar in 1 minuut</div>
+  </header>
 
-  <section class="hero">
-    <div class="badge">Gratis SUPRSLIM weekmenu</div>
-    <h1>Nooit meer bedenken wat je deze week moet eten.</h1>
-    <p class="subtitle">
-      Speciaal voor test2: ontvang een simpel, gezond en betaalbaar weekmenu met boodschappenlijst.
-    </p>
-
-    <form class="formbox" action="https://formsubmit.co/sandervandenbaart@outlook.com" method="POST">
-      <input type="email" name="email" placeholder="Vul je e-mailadres in" required>
-      <button type="submit">Stuur mij het weekmenu</button>
-    </form>
-    <p class="small">Gratis download. Geen ingewikkelde diëten. Gewoon slimmer eten.</p>
-  </section>
-
-  <section class="section">
-    <div class="grid">
-      <div class="card">
-        <h3>Gezond zonder gedoe</h3>
-        <p>Geen ingewikkelde recepten of dure producten. Gewoon makkelijke maaltijden voor een drukke week.</p>
+  <main class="page-shell">
+    <section class="hero">
+      <div>
+        <div class="eyebrow">✓ Gratis gezinsmenu + boodschappenlijst</div>
+        <h1>Plan 5 gezonde gezinsmaaltijden in minder dan 1 minuut.</h1>
+        <p class="subtitle">
+          Ontvang direct een simpel SUPRSLIM weekmenu voor test2, zodat je minder hoeft te bedenken, gerichter boodschappen doet en toch gezond eet.
+        </p>
+        <ul class="hero-list" aria-label="Voordelen">
+          <li><span class="check">✓</span><span>5 dagen ontbijt, lunch, diner en snacks in één overzicht.</span></li>
+          <li><span class="check">✓</span><span>Betaalbare ingrediënten die je in de normale supermarkt vindt.</span></li>
+          <li><span class="check">✓</span><span>Inclusief boodschappenlijst om impulsaankopen te voorkomen.</span></li>
+        </ul>
       </div>
-      <div class="card">
-        <h3>Slim boodschappen doen</h3>
-        <p>Met een duidelijke boodschappenlijst koop je gerichter in en voorkom je onnodige impulsaankopen.</p>
-      </div>
-      <div class="card">
-        <h3>Minder keuzestress</h3>
-        <p>Je weet vooraf wat je eet. Dat geeft rust, structuur en meer controle over je week.</p>
-      </div>
-    </div>
-  </section>
 
-  <section class="section">
-    <div class="dark">
-      <h2>Wat krijg je gratis?</h2>
-      <p>Een 5-daags SUPRSLIM weekmenu met ontbijt, lunch, diner, snacks en boodschappenlijst.</p>
-    </div>
-  </section>
+      <aside class="lead-card" id="gratis-weekmenu" aria-label="Gratis weekmenu aanvragen">
+        <div class="lead-card-inner">
+          <div class="form-header">
+            <span class="pill">Direct gratis downloaden</span>
+            <h2>Waar mogen we het weekmenu naartoe sturen?</h2>
+            <p>Vul alleen je e-mailadres in. Je krijgt het menu en de boodschappenlijst direct in je inbox.</p>
+          </div>
 
-  <section class="section">
-    <div class="grid">
-      <div class="card">
-        <h3>Voor wie is dit?</h3>
-        <p>Voor mensen die gezonder willen eten, minder willen nadenken en slimmer boodschappen willen doen.</p>
-      </div>
-      <div class="card">
-        <h3>Waarom SUPRSLIM?</h3>
-        <p>SUPRSLIM helpt je slim inkopen, slim voorbereiden en gezond eten zonder gedoe.</p>
-      </div>
-    </div>
-  </section>
+          <form class="formbox" action="https://formsubmit.co/sandervandenbaart@outlook.com" method="POST">
+            <input type="hidden" name="_subject" value="Nieuwe SUPRSLIM aanvraag: test2">
+            <input type="hidden" name="_template" value="table">
+            <input type="hidden" name="_captcha" value="false">
+            <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+            <label for="email">
+              E-mailadres
+              <input id="email" type="email" name="email" placeholder="jij@voorbeeld.nl" inputmode="email" autocomplete="email" required>
+            </label>
+            <button type="submit">Stuur mij het gratis weekmenu →</button>
+            <p class="privacy-note">Gratis download. Geen spam; je ontvangt alleen praktische SUPRSLIM tips en kunt je altijd afmelden.</p>
+          </form>
 
-  <footer>
+          <div class="form-benefits" aria-label="Waarom aanvragen">
+            <div class="check-row"><span class="check">✓</span><span>Geen betaalgegevens nodig</span></div>
+            <div class="check-row"><span class="check">✓</span><span>Geschikt voor drukke doordeweekse dagen</span></div>
+            <div class="check-row"><span class="check">✓</span><span>Ontworpen om snel te kunnen starten</span></div>
+          </div>
+        </div>
+      </aside>
+    </section>
+
+    <section class="section" aria-labelledby="voordelen">
+      <div class="section-heading">
+        <h2 id="voordelen">Waarom gezinnen sneller starten met dit menu</h2>
+        <p>Je ziet in één oogopslag wat je krijgt, waarom het handig is en welke stap je hoeft te zetten om te starten.</p>
+      </div>
+      <div class="grid">
+        <article class="card">
+          <div class="card-icon">🥦</div>
+          <h3>Gezond zonder gedoe</h3>
+          <p>Geen ingewikkelde recepten of dure producten. Gewoon makkelijke maaltijden die passen in een volle agenda.</p>
+        </article>
+        <article class="card">
+          <div class="card-icon">🛒</div>
+          <h3>Slim boodschappen doen</h3>
+          <p>Met een duidelijke lijst koop je gerichter in, bespaar je tijd in de winkel en voorkom je onnodige aankopen.</p>
+        </article>
+        <article class="card">
+          <div class="card-icon">🧘</div>
+          <h3>Minder keuzestress</h3>
+          <p>Je weet vooraf wat je eet. Dat geeft rust, structuur en meer controle over de week.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="inhoud">
+      <div class="preview-card">
+        <div>
+          <span class="pill">Wat je krijgt</span>
+          <h2 id="inhoud">Een praktisch 5-daags plan dat je meteen kunt gebruiken.</h2>
+          <p>Het weekmenu combineert simpele maaltijden met een boodschappenlijst, zodat aanvragen logisch voelt en de drempel laag blijft.</p>
+        </div>
+        <ul class="menu-list">
+          <li><strong>Dagplanning</strong><span>ontbijt t/m snack</span></li>
+          <li><strong>Recepten</strong><span>snel en haalbaar</span></li>
+          <li><strong>Boodschappenlijst</strong><span>overzichtelijk per categorie</span></li>
+          <li><strong>SUPRSLIM tips</strong><span>voor voorbereiding</span></li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <div class="sticky-cta"><a href="#gratis-weekmenu">Download gratis weekmenu →</a></div>
+
+  <footer class="page-shell">
     SUPRSLIM — slim inkopen, slim voorbereiden, gezond eten zonder gedoe.
   </footer>
-
 </body>
 </html>
