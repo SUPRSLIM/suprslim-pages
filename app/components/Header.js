@@ -28,6 +28,9 @@ export default function Header() {
           <Link href="/weeklijst" className="text-sm font-medium text-slate-400 hover:text-white transition-colors">
             Weeklijst
           </Link>
+          <Link href="/blog" className="text-sm font-medium text-slate-400 hover:text-white transition-colors">
+            Blog
+          </Link>
           <Link href="/horeca" className="text-sm font-medium text-slate-400 hover:text-white transition-colors">
             Horeca Engine
           </Link>

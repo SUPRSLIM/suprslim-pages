@@ -26,6 +26,16 @@ async function getWeeklijst() {
   }
 }
 
+export async function generateMetadata() {
+  const data = await getWeeklijst();
+  if (!data) return { title: 'Weeklijst niet gevonden' };
+
+  return {
+    title: `${data.title} | SUPRSLIM`,
+    description: `Bekijk je persoonlijke SUPRSLIM weekmenu: gezonde recepten, een complete boodschappenlijst en slimme bespaartips.`,
+  };
+}
+
 export default async function WeeklijstPage() {
   const data = await getWeeklijst();
 
@@ -39,6 +49,22 @@ export default async function WeeklijstPage() {
 
   return (
     <main className="min-h-screen bg-slate-950 text-slate-100 p-6 md:p-12">
+      {/* Schema.org Recipe/Menu for SEO/GEO */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Menu",
+            "name": data.title,
+            "description": "Een 5-daags gezond weekmenu met focus op soep en slim inkopen.",
+            "provider": {
+              "@type": "Organization",
+              "name": "SUPRSLIM"
+            }
+          })
+        }}
+      />
       <div className="max-w-4xl mx-auto">
         <header className="mb-12 border-b border-white/5 pb-8">
           <h1 className="text-4xl md:text-5xl font-bold mb-4">{data.title}</h1>
