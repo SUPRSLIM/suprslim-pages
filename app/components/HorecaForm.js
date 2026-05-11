@@ -6,6 +6,7 @@ export default function HorecaForm() {
   const [status, setStatus] = useState('idle');
   const [formData, setFormData] = useState({
     restaurant: '',
+    email: '',
     website: '',
     goal: 'Marge verbeteren',
   });
@@ -14,11 +15,24 @@ export default function HorecaForm() {
     e.preventDefault();
     setStatus('loading');
     
-    // In a real scenario, this would write to the 'Horeca klanten' table in Airtable
-    // For now, we simulate a successful intake.
-    setTimeout(() => {
-      setStatus('success');
-    }, 1500);
+    try {
+      const response = await fetch('/api/horeca', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (response.ok) {
+        setStatus('success');
+      } else {
+        setStatus('error');
+      }
+    } catch (error) {
+      console.error('Horeca Submit Error:', error);
+      setStatus('error');
+    }
   };
 
   return (
@@ -35,6 +49,11 @@ export default function HorecaForm() {
         </div>
       ) : (
         <form onSubmit={handleSubmit} className="space-y-8 p-12 bg-slate-900/50 rounded-[3rem] border border-white/5 shadow-2xl">
+          {status === 'error' && (
+            <div className="p-4 bg-red-500/10 border border-red-500/20 rounded-2xl text-red-400 text-sm">
+              Oeps! Er ging iets mis. Probeer het later opnieuw of stuur een mail naar info@suprslim.nl.
+            </div>
+          )}
           <div className="space-y-6">
             <div>
               <label className="block text-sm font-bold text-slate-400 uppercase tracking-widest mb-3 ml-1">Naam Horecazaak</label>
@@ -44,6 +63,17 @@ export default function HorecaForm() {
                 value={formData.restaurant}
                 onChange={(e) => setFormData({...formData, restaurant: e.target.value})}
                 placeholder="Bijv. La Cafetera"
+                className="w-full bg-slate-950 border border-white/5 rounded-2xl px-6 py-4 outline-none focus:border-emerald-500/50 transition-all text-white text-lg"
+              />
+            </div>
+            <div>
+              <label className="block text-sm font-bold text-slate-400 uppercase tracking-widest mb-3 ml-1">E-mailadres</label>
+              <input
+                type="email"
+                required
+                value={formData.email}
+                onChange={(e) => setFormData({...formData, email: e.target.value})}
+                placeholder="naam@zaak.nl"
                 className="w-full bg-slate-950 border border-white/5 rounded-2xl px-6 py-4 outline-none focus:border-emerald-500/50 transition-all text-white text-lg"
               />
             </div>

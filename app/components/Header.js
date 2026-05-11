@@ -3,48 +3,38 @@ import Image from 'next/image';
 
 export default function Header() {
   return (
-    <header className="w-full py-4 px-6 md:px-12 bg-slate-950/80 backdrop-blur-md border-b border-white/5 sticky top-0 z-50">
+    <header className="w-full py-6 px-6 md:px-12 bg-white/50 backdrop-blur-md border-b border-[#eeebe3] sticky top-0 z-50">
       <div className="max-w-7xl mx-auto flex justify-between items-center">
-        {/* Logo */}
+        {/* Logo - Minimalist & Soft */}
         <Link href="/" className="flex items-center gap-3 group">
-          <div className="relative w-10 h-10 overflow-hidden rounded-lg">
-            <Image 
-              src="/logo.png" 
-              alt="SUPRSLIM Logo" 
-              fill 
-              className="object-contain"
-            />
-          </div>
-          <span className="text-xl font-black tracking-tighter text-white group-hover:text-emerald-500 transition-colors">
-            SUPRS<span className="text-emerald-500 group-hover:text-white">LIM</span>
+          <span className="text-2xl font-bold tracking-tight text-[#3d4a40] group-hover:text-primary transition-colors">
+            SUPRS<span className="text-primary group-hover:text-accent">LIM</span>
           </span>
         </Link>
 
         {/* Navigation */}
-        <nav className="hidden md:flex items-center gap-8">
-          <Link href="/" className="text-sm font-medium text-slate-400 hover:text-white transition-colors">
-            Home
+        <nav className="hidden md:flex items-center gap-12">
+          <Link href="/" className="text-sm font-semibold text-[#6a7a6e] hover:text-[#3d4a40] transition-colors tracking-wide">
+            Overzicht
           </Link>
-          <Link href="/weeklijst" className="text-sm font-medium text-slate-400 hover:text-white transition-colors">
+          <Link href="/weeklijst" className="text-sm font-semibold text-[#6a7a6e] hover:text-[#3d4a40] transition-colors tracking-wide">
             Weeklijst
           </Link>
-          <Link href="/blog" className="text-sm font-medium text-slate-400 hover:text-white transition-colors">
-            Blog
+          <Link href="/blog" className="text-sm font-semibold text-[#6a7a6e] hover:text-[#3d4a40] transition-colors tracking-wide">
+            Tips & Inspiratie
           </Link>
-          <Link href="/horeca" className="text-sm font-medium text-slate-400 hover:text-white transition-colors">
-            Horeca Engine
+          <Link href="/horeca" className="text-sm font-semibold text-[#6a7a6e] hover:text-[#3d4a40] transition-colors tracking-wide">
+            Voor Ondernemers
           </Link>
         </nav>
 
         {/* CTA */}
-        <div className="flex items-center gap-4">
-          <Link 
-            href="/#download" 
-            className="px-5 py-2 bg-orange-600 hover:bg-orange-500 text-white text-sm font-bold rounded-xl transition-all shadow-lg shadow-orange-600/20 active:scale-95"
-          >
-            Gratis Weeklijst
-          </Link>
-        </div>
+        <Link 
+          href="/#download" 
+          className="px-8 py-3 bg-accent hover:bg-[#d89a52] text-white text-sm font-bold rounded-2xl transition-all shadow-sm active:scale-95"
+        >
+          Ontvang Weeklijst
+        </Link>
       </div>
     </header>
   );

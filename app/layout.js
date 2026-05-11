@@ -1,11 +1,6 @@
-import { Outfit } from "next/font/google";
 import "./globals.css";
 import Header from "./components/Header";
-
-const outfit = Outfit({
-  subsets: ["latin"],
-  display: "swap",
-});
+import Footer from "./components/Footer";
 
 export const metadata = {
   title: "SUPRSLIM | Slim Koken & Gezond Leven",
@@ -15,11 +10,12 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="nl" className="h-full antialiased">
-      <body className={`${outfit.className} min-h-full flex flex-col bg-slate-950 text-slate-100`}>
+      <body className="min-h-full flex flex-col bg-background text-foreground">
         <Header />
         <main className="flex-grow">
           {children}
         </main>
+        <Footer />
       </body>
     </html>
   );

@@ -25,21 +25,21 @@ async function getBlogs() {
       slug: slugify(record.get('Blog titel') || ''),
     }));
   } catch (error) {
-    console.error('Error fetching blogs:', error);
+    console.error('Airtable Error [getBlogs]:', error.message || error);
     return [];
   }
 }
 
 export const metadata = {
-  title: "Blog | Slimme Tips voor een Gezonder Leven | SUPRSLIM",
-  description: "Ontdek tips over slim boodschappen doen, makkelijke maaltijden en hoe je gezond eten haalbaar maakt in een druk leven.",
+  title: "Inspiratie & Tips voor een Rustige Week | SUPRSLIM",
+  description: "Ontdek simpele gewoontes, gezonde routines en manieren om meer rust te creëren in je dagelijkse voeding.",
 };
 
 export default async function BlogIndex() {
   const blogs = await getBlogs();
 
   return (
-    <main className="min-h-screen bg-[#040d08] py-24 px-6">
+    <main className="min-h-screen bg-[#f8f6f2] py-32 px-6">
       {/* Schema.org Blog for SEO/GEO */}
       <script
         type="application/ld+json"
@@ -47,8 +47,8 @@ export default async function BlogIndex() {
           __html: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "Blog",
-            "name": "SUPRSLIM Blog",
-            "description": "Artikelen over slim koken, gezond eten en besparen op boodschappen.",
+            "name": "SUPRSLIM Lifestyle Blog",
+            "description": "Een verzameling van rustige routines en slimme eetgewoontes.",
             "publisher": {
               "@type": "Organization",
               "name": "SUPRSLIM"
@@ -56,41 +56,76 @@ export default async function BlogIndex() {
           })
         }}
       />
+      
       <div className="max-w-7xl mx-auto">
-        <header className="mb-20 text-center">
-          <div className="inline-block px-4 py-1 bg-emerald-500/20 text-emerald-400 rounded-full text-sm font-semibold mb-6 border border-emerald-500/20">
-            SUPRSLIM Blog
+        <header className="mb-32 text-center">
+          <div className="inline-block px-5 py-2 bg-primary/10 text-primary border border-primary/20 rounded-full text-[10px] font-bold uppercase tracking-widest mb-10">
+            Inspiratie & Begeleiding
           </div>
-          <h1 className="text-5xl md:text-7xl font-extrabold text-white mb-6 tracking-tight">
-            Slimme tips voor <br /> <span className="text-emerald-500">gezonder leven.</span>
+          <h1 className="text-5xl md:text-7xl font-bold text-[#3d4a40] mb-10 tracking-tight leading-[1.1]">
+            Rust vinden in je <br /> <span className="text-primary italic">dagelijkse routines.</span>
           </h1>
-          <p className="text-slate-400 text-xl max-w-2xl mx-auto leading-relaxed">
-            Lees alles over slim boodschappen doen, makkelijke maaltijden en hoe je gezond eten haalbaar maakt in een druk leven.
+          <p className="text-[#6a7a6e] text-xl max-w-2xl mx-auto leading-relaxed font-medium">
+            Lees meer over de kunst van het weglaten, slimme voorbereiding en hoe je meer mentale ruimte creëert rondom eten.
           </p>
         </header>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {blogs.map((blog) => (
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-16">
+          {blogs.map((blog, index) => (
             <Link 
               key={blog.id} 
-              href={`/blog/${blog.id}`} // Using ID for now as primary key for fetching
-              className="group flex flex-col bg-slate-900/30 rounded-[2.5rem] border border-white/5 hover:border-emerald-500/20 transition-all overflow-hidden"
+              href={`/blog/${blog.id}`}
+              className={`group flex flex-col bg-white rounded-[3.5rem] border border-[#eeebe3] hover:border-primary/30 transition-all p-2 shadow-sm hover:shadow-xl hover:shadow-[#95b89b]/5 ${index % 2 === 0 ? 'md:mt-8' : ''}`}
             >
               <div className="p-10">
-                <h3 className="text-2xl font-bold text-white mb-4 group-hover:text-emerald-400 transition-colors">
+                <h3 className="text-2xl font-bold text-[#3d4a40] mb-6 group-hover:text-primary transition-colors leading-tight">
                   {blog.title}
                 </h3>
-                <p className="text-slate-400 leading-relaxed mb-8 line-clamp-3">
+                <p className="text-[#6a7a6e] leading-relaxed mb-10 line-clamp-3 font-medium">
                   {blog.intro}
                 </p>
-                <div className="flex items-center text-emerald-500 font-bold text-sm uppercase tracking-widest gap-2">
-                  Lees meer 
+                <div className="flex items-center text-accent font-bold text-xs uppercase tracking-widest gap-2">
+                  Lees het verhaal
                   <span className="group-hover:translate-x-1 transition-transform">→</span>
                 </div>
               </div>
             </Link>
           ))}
         </div>
+
+        {/* Vlogs & Reels Section */}
+        <section className="mt-48">
+          <div className="flex flex-col md:flex-row justify-between items-end mb-20 gap-10">
+            <div className="max-w-xl">
+              <h2 className="text-4xl md:text-5xl font-bold text-[#3d4a40] mb-8 tracking-tight">
+                Bekijk onze <br /> <span className="text-primary italic">dagelijkse vlogs.</span>
+              </h2>
+              <p className="text-[#6a7a6e] text-lg font-medium leading-relaxed">
+                Volg ons op TikTok en Instagram voor snelle bespaartips, kijkjes achter de schermen en simpele recepten.
+              </p>
+            </div>
+            <div className="flex gap-4">
+               <div className="px-6 py-3 bg-white border border-[#eeebe3] rounded-2xl font-bold text-xs uppercase tracking-widest text-[#3d4a40]">@SUPRSLIM</div>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+            {[1, 2, 3, 4].map((i) => (
+              <div key={i} className="group relative aspect-[9/16] bg-[#eeebe3] rounded-[2.5rem] overflow-hidden cursor-pointer shadow-sm hover:shadow-xl transition-all">
+                <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex flex-col justify-end p-8">
+                   <p className="text-white font-bold text-sm">Bekijk op Instagram</p>
+                </div>
+                <div className="absolute inset-0 flex items-center justify-center">
+                   <div className="w-16 h-16 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center text-white text-2xl group-hover:scale-110 transition-transform">
+                     ▶
+                   </div>
+                </div>
+                {/* Placeholder for video thumbnail */}
+                <div className="w-full h-full bg-gradient-to-br from-primary/10 to-accent/10"></div>
+              </div>
+            ))}
+          </div>
+        </section>
       </div>
     </main>
   );

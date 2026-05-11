@@ -2,13 +2,13 @@ import HorecaForm from '../components/HorecaForm';
 import Image from 'next/image';
 
 export const metadata = {
-  title: "Horeca Engine | Slimmere Menu's & Hogere Marges | SUPRSLIM",
-  description: "De SUPRSLIM Engine optimaliseert je horeca-concept met data-gedreven menu's, soeprotatie en slimme inkoopstrategieën.",
+  title: "Voor Ondernemers | Een Rustige Keuken | SUPRSLIM",
+  description: "Wij begeleiden horecaondernemers bij het vereenvoudigen van hun aanbod voor een rustigere keuken en meer persoonlijke balans.",
 };
 
 export default function HorecaPage() {
   return (
-    <main className="min-h-screen bg-[#040d08] text-white">
+    <main className="min-h-screen bg-[#f8f6f2] text-[#3d4a40]">
       {/* Schema.org Service for SEO/GEO */}
       <script
         type="application/ld+json"
@@ -16,70 +16,68 @@ export default function HorecaPage() {
           __html: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "Service",
-            "serviceType": "Horeca Menu Optimalisatie",
+            "serviceType": "Horeca Lifestyle Begeleiding",
             "provider": {
               "@type": "Organization",
               "name": "SUPRSLIM"
             },
-            "description": "Analyse en optimalisatie van menukaarten voor hogere marges en efficiëntere keukenprocessen.",
+            "description": "Begeleiding voor horecaondernemers bij het vereenvoudigen van hun aanbod en operatie.",
             "areaServed": "NL"
           })
         }}
       />
+
       {/* Hero Section */}
-      <section className="relative py-24 px-6 overflow-hidden border-b border-white/5">
-        <div className="absolute top-0 right-0 w-1/2 h-full bg-emerald-500/5 blur-[120px] rounded-full -z-10"></div>
+      <section className="relative py-32 px-6 overflow-hidden">
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
           <div>
-            <div className="inline-block px-4 py-1 bg-emerald-500/20 text-emerald-400 rounded-full text-sm font-semibold mb-8 border border-emerald-500/20">
-              SUPRSLIM B2B Engine
+            <div className="inline-block px-5 py-2 bg-primary/10 text-primary border border-primary/20 rounded-full text-xs font-bold uppercase tracking-widest mb-10">
+              SUPRSLIM voor Horeca
             </div>
-            <h1 className="text-5xl md:text-7xl font-extrabold mb-8 leading-tight tracking-tight">
-              Slimmere menu's. <br />
-              <span className="text-emerald-500 italic">Hogere marges.</span>
+            <h1 className="text-5xl md:text-7xl font-bold mb-10 leading-[1.1] tracking-tight">
+              Een slimme menukaart <br />
+              <span className="text-primary italic">voor een rustige zaak.</span>
             </h1>
-            <p className="text-slate-400 text-xl md:text-2xl mb-12 leading-relaxed max-w-xl">
-              De SUPRSLIM Engine analyseert je huidige menukaart, inkoop en operationele kaders om een optimaal maandconcept te genereren. 
+            <p className="text-[#6a7a6e] text-xl md:text-2xl mb-12 leading-relaxed max-w-xl font-medium">
+              Geen overbelaste keuken of complexe inkoop meer. Wij helpen je terug naar de essentie, zodat jij weer tijd hebt voor wat echt telt.
             </p>
-            <div className="space-y-6">
-              <div className="flex items-start gap-4">
-                <div className="w-12 h-12 bg-slate-900 rounded-2xl flex items-center justify-center flex-shrink-0 border border-white/5">
-                   <span className="text-xl">📊</span>
+            
+            <div className="space-y-8 mt-12">
+              <div className="flex items-start gap-6">
+                <div className="w-14 h-14 bg-white rounded-3xl flex items-center justify-center flex-shrink-0 shadow-sm border border-[#eeebe3]">
+                   <span className="text-2xl">🧘</span>
                 </div>
                 <div>
-                  <h3 className="font-bold text-lg">Data-gedreven menu's</h3>
-                  <p className="text-slate-500">Optimaliseer op basis van inkoopkosten en populaire smaken.</p>
+                  <h3 className="font-bold text-xl text-[#3d4a40]">Persoonlijke balans</h3>
+                  <p className="text-[#6a7a6e] font-medium leading-relaxed">Een beheersbare operatie geeft jou als ondernemer weer lucht en plezier in je werk.</p>
                 </div>
               </div>
-              <div className="flex items-start gap-4">
-                <div className="w-12 h-12 bg-slate-900 rounded-2xl flex items-center justify-center flex-shrink-0 border border-white/5">
-                   <span className="text-xl">🍲</span>
+              <div className="flex items-start gap-6">
+                <div className="w-14 h-14 bg-white rounded-3xl flex items-center justify-center flex-shrink-0 shadow-sm border border-[#eeebe3]">
+                   <span className="text-2xl">🌿</span>
                 </div>
                 <div>
-                  <h3 className="font-bold text-lg">Subtiele Soeprotatie</h3>
-                  <p className="text-slate-500">Verhoog je bonwaarde zonder de keuken te overbelasten.</p>
+                  <h3 className="font-bold text-xl text-[#3d4a40]">Subtiele eenvoud</h3>
+                  <p className="text-[#6a7a6e] font-medium leading-relaxed">Verleid gasten met een compact, gezond aanbod dat makkelijk en foutloos te bereiden is.</p>
                 </div>
               </div>
             </div>
           </div>
 
           <div className="relative">
+            <div className="absolute inset-0 bg-accent/5 blur-[100px] -z-10 rounded-full"></div>
             <HorecaForm />
           </div>
         </div>
       </section>
 
-      {/* Trust Section */}
-      <section className="py-24 px-6 bg-slate-950/50">
-        <div className="max-w-5xl mx-auto text-center">
-          <h2 className="text-sm font-bold text-slate-500 uppercase tracking-[0.3em] mb-12">Partners in Horeca Innovatie</h2>
-          <div className="flex flex-wrap justify-center gap-16 opacity-40 grayscale contrast-125">
-             {/* Logo placeholders */}
-             <span className="text-2xl font-bold italic">La Cafetera</span>
-             <span className="text-2xl font-bold">HANOS</span>
-             <span className="text-2xl font-bold">Lightspeed</span>
-             <span className="text-2xl font-bold">QR-Order</span>
-          </div>
+      {/* Philosophy Section */}
+      <section className="py-32 px-6 bg-[#faf8f4]">
+        <div className="max-w-4xl mx-auto text-center">
+          <h2 className="text-3xl md:text-4xl font-bold mb-10 text-[#3d4a40]">De kracht van weglaten</h2>
+          <p className="text-[#6a7a6e] text-xl leading-relaxed italic font-medium">
+            "Succes in de moderne horeca zit niet in een dikke menukaart, maar in de rust die je uitstraalt door te kiezen voor wat écht werkt. Voor jou, je team en je gasten."
+          </p>
         </div>
       </section>
     </main>

@@ -3,27 +3,39 @@ import airtable from '@/lib/airtable';
 
 export async function POST(req) {
   try {
-    const { email } = await req.json();
+    const { email, source = 'homepage' } = await req.json();
 
     if (!email) {
-      return NextResponse.json({ error: 'Email is required' }, { status: 400 });
+      return NextResponse.json({ error: 'Email is verplicht' }, { status: 400 });
     }
 
-    // Write to Airtable (using only basic fields to avoid select-option errors)
+    // Capture the lead with source and date tracking
     await airtable('Leads').create([
       {
         fields: {
           'Lead naam': email.split('@')[0],
           'E-mail': email,
-          // Removed 'Interesse' and 'Bron' to ensure write success
-          // These can be added back once the exact options are confirmed in Airtable
+          'Bron': source,
+          'Datum aanvraag': new Date().toISOString(),
+          'Status': 'Nieuw', // Ensure there is a status field in Airtable
         },
       },
     ]);
 
-    return NextResponse.json({ message: 'Lead added successfully' }, { status: 200 });
+    return NextResponse.json({ 
+      success: true, 
+      message: 'Lead succesvol toegevoegd' 
+    }, { status: 200 });
+
   } catch (error) {
-    console.error('Airtable Error:', error);
-    return NextResponse.json({ error: 'Failed to add lead' }, { status: 500 });
+    console.error('Airtable Lead Submission Error:', error);
+    
+    // Check if it's a specific Airtable error (like missing field)
+    const errorMessage = error.message || 'Kon lead niet toevoegen';
+    
+    return NextResponse.json({ 
+      success: false, 
+      error: errorMessage 
+    }, { status: 500 });
   }
 }

@@ -29,6 +29,13 @@ Before submitting changes, manually verify pages on desktop and mobile. Ensure A
 
 Use short Dutch summaries for commits (e.g., `Update weekmenu component`).
 
+## Phase 1 Launch Rules
+
+1.  **Airtable is Sovereign**: All dynamic content (Blogs, Weeklijsten, Tips, Leads) must flow through Airtable. Hardcoding is only for permanent UI structural elements.
+2.  **The "Lizzy" Persona**: All copy must be vibrant, practical, and empathetic. Avoid technical jargon; focus on "mentale rust" and "slim besparen".
+3.  **Kirsten Quality Control**: Before adding new features or content logic, verify if they align with the core values: Health, Budget, and Simplicity.
+4.  **Safety First**: Ensure the medical and tax disclaimers are always visible in the global footer.
+
 ## Security & Agent-Specific Instructions
 
 Never commit `.env.local` or tokens. 
