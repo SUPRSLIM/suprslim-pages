@@ -1,4 +1,7 @@
 import { NextResponse } from 'next/server';
+import { Resend } from 'resend';
+
+const resend = new Resend(process.env.RESEND_API_KEY);
 
 export async function POST(request) {
   try {
@@ -17,12 +20,28 @@ export async function POST(request) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
 
-    // De Magic Link die gestuurd moet worden
     const magicLink = `https://suprslim.nl${user.path}?token=${user.token}`;
 
-    // VOOR NU: We loggen de link in de console zodat je hem kunt kopiëren
-    // TODO: Koppelen aan MailerLite of Resend API
-    console.log(`MAGIC LINK VOOR ${user.name}: ${magicLink}`);
+    // Verzend de mail via Resend
+    await resend.emails.send({
+      from: 'SUPRSLIM Hub <noreply@suprslim.nl>',
+      to: [email.toLowerCase()],
+      subject: 'Je magische link voor de SUPRSLIM Hub',
+      html: `
+        <div style="font-family: sans-serif; max-width: 600px; margin: 0 auto; padding: 40px; border: 1px solid #eeebe3; border-radius: 24px; background-color: #f8f6f2;">
+          <h1 style="color: #3d4a40; margin-bottom: 20px;">Hoi ${user.name}!</h1>
+          <p style="color: #6a7a6e; font-size: 16px; line-height: 1.6; margin-bottom: 30px;">
+            Klik op de onderstaande knop om direct in te loggen op je persoonlijke SUPRSLIM Dashboard.
+          </p>
+          <a href="${magicLink}" style="display: inline-block; padding: 16px 32px; background-color: #3d4a40; color: white; text-decoration: none; border-radius: 12px; font-weight: bold;">
+            Direct Inloggen →
+          </a>
+          <p style="color: #999; font-size: 12px; margin-top: 40px; border-top: 1px solid #eeebe3; pt: 20px;">
+            Deze link is persoonlijk en geeft direct toegang tot jouw account.
+          </p>
+        </div>
+      `,
+    });
 
     return NextResponse.json({ success: true });
   } catch (error) {
