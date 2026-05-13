@@ -3,7 +3,7 @@ export default function robots() {
     rules: {
       userAgent: '*',
       allow: '/',
-      disallow: '/private/',
+      disallow: ['/private/', '/dashboard/'],
     },
     sitemap: 'https://suprslim.nl/sitemap.xml',
   }

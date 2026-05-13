@@ -4,6 +4,10 @@ import Link from 'next/link';
 export const metadata = {
   title: "Content Hub | SUPRSLIM",
   description: "Centraal dashboard voor Kirsten's content creatie.",
+  robots: {
+    index: false,
+    follow: false,
+  },
 };
 
 export default async function ContentDashboard({ searchParams }) {

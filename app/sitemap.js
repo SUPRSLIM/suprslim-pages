@@ -6,7 +6,7 @@ export default async function sitemap() {
   // Fetch blogs for dynamic paths
   let blogs = [];
   try {
-    const records = await airtable('Blogs').select({
+    const records = await airtable('ARCHIEF - Blogs').select({
       fields: ['Blog titel'],
     }).all();
     blogs = records.map(record => ({
