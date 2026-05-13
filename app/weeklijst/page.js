@@ -1,5 +1,7 @@
 import airtable from '@/lib/airtable';
 
+export const dynamic = 'force-dynamic';
+
 async function getWeeklijst() {
   try {
     const records = await airtable('Slimme Weeklijsten').select({
@@ -7,8 +9,13 @@ async function getWeeklijst() {
       filterByFormula: "{Status} = 'Gereed'"
     }).firstPage();
     
+    console.log('Airtable Records Found:', records.length);
+
     const record = records[0];
-    if (!record) return null;
+    if (!record) {
+      console.log('No record found with Status = Gereed');
+      return null;
+    }
 
     return {
       title: record.get('Weeklijst titel'),
