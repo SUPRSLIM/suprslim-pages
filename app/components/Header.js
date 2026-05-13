@@ -23,9 +23,6 @@ export default function Header() {
           <Link href="/blog" className="text-sm font-semibold text-[#6a7a6e] hover:text-[#3d4a40] transition-colors tracking-wide">
             Tips & Inspiratie
           </Link>
-          <Link href="/horeca" className="text-sm font-semibold text-[#6a7a6e] hover:text-[#3d4a40] transition-colors tracking-wide">
-            Voor Ondernemers
-          </Link>
         </nav>
 
         {/* CTA */}
