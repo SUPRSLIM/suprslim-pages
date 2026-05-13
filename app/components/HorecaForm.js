@@ -62,7 +62,7 @@ export default function HorecaForm() {
                 required
                 value={formData.restaurant}
                 onChange={(e) => setFormData({...formData, restaurant: e.target.value})}
-                placeholder="Bijv. La Cafetera"
+                placeholder="Naam van de horecazaak"
                 className="w-full bg-slate-950 border border-white/5 rounded-2xl px-6 py-4 outline-none focus:border-emerald-500/50 transition-all text-white text-lg"
               />
             </div>
