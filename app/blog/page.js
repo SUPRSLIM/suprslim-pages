@@ -14,7 +14,7 @@ function slugify(text) {
 
 async function getBlogs() {
   try {
-    const records = await airtable('Blogs').select({
+    const records = await airtable('ARCHIEF - Blogs').select({
       sort: [{ field: 'Blog titel', direction: 'asc' }]
     }).all();
     

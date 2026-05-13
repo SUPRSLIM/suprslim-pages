@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 async function getBlogPost(id) {
   try {
-    const record = await airtable('Blogs').find(id);
+    const record = await airtable('ARCHIEF - Blogs').find(id);
     return {
       id: record.id,
       title: record.get('Blog titel'),
