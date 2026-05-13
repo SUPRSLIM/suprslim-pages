@@ -6,7 +6,27 @@ export const metadata = {
   description: "Centraal dashboard voor Kirsten's content creatie.",
 };
 
-export default async function ContentDashboard() {
+export default async function ContentDashboard({ searchParams }) {
+  const { token } = await searchParams;
+  
+  // Simple Magic Link Token Check
+  if (token !== 'kirsten_creative_hub_2026') {
+    return (
+      <main className="min-h-screen bg-[#f8f6f2] flex items-center justify-center px-6">
+        <div className="max-w-md w-full text-center bg-white p-12 rounded-[3rem] border border-[#eeebe3] shadow-sm">
+          <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center text-primary text-2xl mx-auto mb-8">🔒</div>
+          <h1 className="text-2xl font-bold text-[#3d4a40] mb-4">Toegang Beperkt</h1>
+          <p className="text-[#6a7a6e] font-medium leading-relaxed mb-8">
+            Deze pagina is alleen toegankelijk via een persoonlijke Magic Link. Neem contact op met de beheerder voor toegang.
+          </p>
+          <Link href="/" className="text-primary font-bold text-sm uppercase tracking-widest hover:text-accent transition-colors">
+            ← Terug naar Home
+          </Link>
+        </div>
+      </main>
+    );
+  }
+
   const tasks = await getSocialContent();
 
   return (
