@@ -14,9 +14,11 @@ export async function POST(request) {
       'ljlvdbaart@gmail.com': { name: 'Lizzy', role: 'lifestyle', token: 'lizzy_lifestyle_hub_2026', path: '/dashboard/team' },
     };
 
+    console.log('Login attempt for:', email.trim().toLowerCase());
     const user = team[email.trim().toLowerCase()];
 
     if (!user) {
+      console.log('User not found in team:', Object.keys(team));
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
 
