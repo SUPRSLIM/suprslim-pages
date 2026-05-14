@@ -19,7 +19,10 @@ export async function POST(request) {
 
     if (!user) {
       console.log('User not found in team:', Object.keys(team));
-      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+      return NextResponse.json({ 
+        error: `Unauthorized: ${email.trim().toLowerCase()}`,
+        received: email
+      }, { status: 401 });
     }
 
     const magicLink = `https://suprslim.nl${user.path}?token=${user.token}`;

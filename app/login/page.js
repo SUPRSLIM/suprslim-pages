@@ -22,7 +22,8 @@ export default function LoginPage() {
       if (response.ok) {
         setStatus('sent');
       } else {
-        setStatus('error');
+        const errorData = await response.json();
+        setStatus(errorData.error || 'error');
       }
     } catch (error) {
       console.error('Login Error:', error);
@@ -77,9 +78,11 @@ export default function LoginPage() {
               {status === 'loading' ? 'Bezig met sturen...' : 'Stuur Magic Link'}
             </button>
 
-            {status === 'error' && (
+            {status !== 'idle' && status !== 'loading' && status !== 'sent' && (
               <p className="text-red-500 text-xs text-center font-medium">
-                Oeps! Dit e-mailadres is niet bekend bij ons team.
+                {status.includes('Unauthorized') 
+                  ? `Oeps! ${status}. Check je spelling.` 
+                  : 'Er ging iets mis. Probeer het later opnieuw.'}
               </p>
             )}
           </form>
