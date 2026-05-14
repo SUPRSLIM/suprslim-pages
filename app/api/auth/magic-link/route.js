@@ -9,7 +9,7 @@ export async function POST(request) {
 
     // Team Config (Pas deze aan met de echte mailadressen)
     const team = {
-      'sander@suprslim.nl': { name: 'Sander', role: 'admin', token: 'sander_boss_mode_2026', path: '/dashboard/sander' },
+      'sandervandenbaart@outlook.com': { name: 'Sander', role: 'admin', token: 'sander_boss_mode_2026', path: '/dashboard/sander' },
       'kirsten@suprslim.nl': { name: 'Kirsten', role: 'creative', token: 'kirsten_creative_hub_2026', path: '/dashboard/kirsten' },
       'lizzy@suprslim.nl': { name: 'Lizzy', role: 'lifestyle', token: 'lizzy_lifestyle_hub_2026', path: '/dashboard/team' },
     };
