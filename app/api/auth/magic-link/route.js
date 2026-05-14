@@ -14,7 +14,7 @@ export async function POST(request) {
       'ljlvdbaart@gmail.com': { name: 'Lizzy', role: 'lifestyle', token: 'lizzy_lifestyle_hub_2026', path: '/dashboard/team' },
     };
 
-    const user = team[email.toLowerCase()];
+    const user = team[email.trim().toLowerCase()];
 
     if (!user) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
