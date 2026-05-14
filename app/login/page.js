@@ -75,7 +75,7 @@ export default function LoginPage() {
               disabled={status === 'loading'}
               className="w-full bg-[#3d4a40] hover:bg-primary text-white font-bold py-5 rounded-2xl transition-all shadow-xl active:scale-95 disabled:opacity-50"
             >
-              {status === 'loading' ? 'Bezig met sturen...' : 'Stuur Magic Link'}
+              {status === 'loading' ? 'Bezig met sturen...' : 'TEST LOGIN NU 🚀'}
             </button>
 
             {status !== 'idle' && status !== 'loading' && status !== 'sent' && (
