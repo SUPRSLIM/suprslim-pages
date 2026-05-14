@@ -11,7 +11,7 @@ export async function POST(request) {
     const team = {
       'sandervandenbaart@outlook.com': { name: 'Sander', role: 'admin', token: 'sander_boss_mode_2026', path: '/dashboard/sander' },
       'km_opperman@hotmail.com': { name: 'Kirsten', role: 'creative', token: 'kirsten_creative_hub_2026', path: '/dashboard/kirsten' },
-      'lizzy@suprslim.nl': { name: 'Lizzy', role: 'lifestyle', token: 'lizzy_lifestyle_hub_2026', path: '/dashboard/team' },
+      'ljlvdbaart@gmail.com': { name: 'Lizzy', role: 'lifestyle', token: 'lizzy_lifestyle_hub_2026', path: '/dashboard/team' },
     };
 
     const user = team[email.toLowerCase()];
