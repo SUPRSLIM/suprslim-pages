@@ -1,6 +1,8 @@
 import { getMenusByStatus } from '@/lib/airtable';
+import airtable from '@/lib/airtable';
 import Link from 'next/link';
 import ClientUpdateButton from '../components/ClientUpdateButton';
+import GenerateButton from '../components/GenerateButton';
 
 export const metadata = {
   robots: { index: false, follow: false },
@@ -26,7 +28,10 @@ export default async function KirstenDashboard({ searchParams }) {
           <h1 className="text-5xl font-bold text-[#3d4a40]">
             Kirsten's <span className="text-primary italic">Proeverij.</span>
           </h1>
-          <p className="text-[#6a7a6e] mt-4 font-medium">Controleer de AI-voorstellen en keur ze goed voor de baas.</p>
+          <p className="text-[#6a7a6e] mt-4 font-medium">Review de AI-voorstellen en stuur ze door naar Sander voor finale check.</p>
+          <div className="mt-8">
+            <GenerateButton token={token} />
+          </div>
         </header>
 
         <div className="space-y-8">

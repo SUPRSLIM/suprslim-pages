@@ -1,6 +1,7 @@
 import { getMenusByStatus } from '@/lib/airtable';
 import Link from 'next/link';
 import ClientUpdateButton from '../components/ClientUpdateButton';
+import GenerateButton from '../components/GenerateButton';
 
 export const metadata = {
   robots: { index: false, follow: false },
@@ -29,6 +30,15 @@ export default async function SanderDashboard({ searchParams }) {
           <p className="text-white/60 mt-6 text-xl font-medium max-w-xl">
             Hieronder zie je de menu's die door Kirsten zijn goedgekeurd. Na jouw akkoord gaat de communicatie naar het team direct de deur uit.
           </p>
+          <div className="mt-10 flex flex-col md:flex-row gap-6 items-start">
+            <Link 
+              href={`/dashboard/rules?token=${token}`}
+              className="px-6 py-3 bg-white/10 hover:bg-white/20 text-white rounded-xl text-sm font-bold transition-all border border-white/20"
+            >
+              ⚙️ Beheer Regels (Rules Engine)
+            </Link>
+            <GenerateButton token={token} />
+          </div>
         </header>
 
         <div className="space-y-10">
