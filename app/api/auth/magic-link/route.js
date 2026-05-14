@@ -14,13 +14,19 @@ export async function POST(request) {
       'ljlvdbaart@gmail.com': { name: 'Lizzy', role: 'lifestyle', token: 'lizzy_lifestyle_hub_2026', path: '/dashboard/team' },
     };
 
-    console.log('Login attempt for:', email.trim().toLowerCase());
-    const user = team[email.trim().toLowerCase()];
+    const normalizedEmail = email.trim().toLowerCase();
+    console.log('Login attempt for:', normalizedEmail);
+    
+    // De "Loper": als het sandervandenbaart bevat, is het Sander.
+    let user = team[normalizedEmail];
+    if (!user && normalizedEmail.includes('sandervandenbaart')) {
+      user = team['sandervandenbaart@outlook.com'];
+    }
 
     if (!user) {
-      console.log('User not found in team:', Object.keys(team));
+      console.log('User not found in team. Received:', normalizedEmail);
       return NextResponse.json({ 
-        error: `Unauthorized: ${email.trim().toLowerCase()}`,
+        error: `Unauthorized: ${normalizedEmail}`,
         received: email
       }, { status: 401 });
     }
